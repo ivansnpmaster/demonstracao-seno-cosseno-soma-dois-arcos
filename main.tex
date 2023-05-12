@@ -1,0 +1,99 @@
+\documentclass[12pt, a4paper]{article}
+
+\input{pacotes}
+\input{comandos}
+
+\begin{document}
+    \input{capa}
+
+    Um vetor $\vt{u}$ pode ser representado através da combinação linear da base cartesiana
+    \[\vt{u}=a\base{x}+b\base{y}\]
+
+    Uma rotação de $\theta$ da base cartesiana no círculo trigonométrico unitário é dada por
+    \input{imagens/rotacao-base-cartesiana}
+    \[
+        \rot_\theta(\base{x})=
+        \begin{bmatrix}
+            \cos(\theta)\\
+            \sin(\theta)
+        \end{bmatrix}
+        \;\text{ e }\;
+        \rot_\theta(\base{y})=
+        \begin{bmatrix}
+            -\sin(\theta)\\
+            \cos(\theta)
+        \end{bmatrix}
+    \]
+    
+    A rotação no plano preserva algumas propriedades úteis. Com $k$ e $\theta$ $\in\R$, um vetor $\vt{u}$ rotacionado por $\theta$ e depois escalonado por $k$ é o mesmo que um vetor $\vt{u}$ escalonado por $k$ e depois rotacionado por $\theta$.
+    \[k\rot_\theta(\vt{u})=\rot_\theta(k\vt{u})\]
+
+    Isso significa que rotacionar um vetor $\vt{u}$ é o mesmo que rotacionar a base cartesiana e escaloná-la pelas componentes de $\vt{u}$.
+    \[\rot_\theta(\vt{u})=a\cdot\rot_\theta(\base{x})+b\cdot\rot_\theta(\base{y})\]
+    \[
+        \rot_\theta(\vt{u})=
+        a
+        \begin{bmatrix}
+            \cos(\theta)\\
+            \sin(\theta)
+        \end{bmatrix}
+        +
+        b
+        \begin{bmatrix}
+            -\sin(\theta)\\
+            \cos(\theta)
+        \end{bmatrix}
+    \]
+    \begin{equation}
+        \label{equacao-rocatao-vetor}
+        \rot_\theta(\vt{u})=
+        \begin{bmatrix}
+            a\cos(\theta)-b\sin(\theta)\\
+            a\sin(\theta)+b\cos(\theta)
+        \end{bmatrix}
+    \end{equation}
+    
+    Ao rotacionarmos, por exemplo, $\base{x}$ primeiramente por $\alpha$ e depois por $\beta$, teremos o mesmo resultado se tivéssemos rotacionado por $\alpha+\beta$, comutativamente.
+    \[
+        \rot_{\alpha+\beta}(\base{x})=\rot_\alpha(\rot_\beta(\base{x}))=\rot_\beta(\rot_\alpha(\base{x}))
+    \]
+    
+    Temos, ainda
+    \begin{equation}
+        \label{equacao-rotacao-dupla}
+        \rot_\beta(\rot_\alpha(\base{x}))
+        =
+        \rot_\beta\left(
+            \begin{bmatrix}
+                \cos(\alpha)\\
+                \sin(\alpha)
+            \end{bmatrix}
+        \right)
+    \end{equation}
+    
+    Lembrando a Equação (\ref{equacao-rocatao-vetor}), temos
+    \[
+        \rot_\theta(\vt{u})
+        =
+        \begin{bmatrix}
+            \color{red}a\color{black}\cos(\theta)-\color{blue}b\color{black}\sin(\theta)\\
+            \color{red}a\color{black}\sin(\theta)+\color{blue}b\color{black}\cos(\theta)
+        \end{bmatrix}
+    \]
+
+    Tomando $\color{red}a=\cos(\alpha)$ e $\color{blue}b=\sin(\alpha)$ nas Equações (\ref{equacao-rocatao-vetor}) e (\ref{equacao-rotacao-dupla}), e considerando a rotação por $\beta$ da Equação (\ref{equacao-rotacao-dupla}), temos
+    \[
+        \rot_{\alpha+\beta}(\base{x})
+        =
+        \begin{bmatrix}
+            \cos(\alpha+\beta)\\
+            \sin(\alpha+\beta)
+        \end{bmatrix}
+        =
+        \begin{bmatrix}
+            \color{red}\cos(\alpha)\color{black}\cos(\beta)-\color{blue}\sin(\alpha)\color{black}\sin(\beta)\\
+            \color{red}\cos(\alpha)\color{black}\sin(\beta)+\color{blue}\sin(\alpha)\color{black}\cos(\beta)
+        \end{bmatrix}
+    \]
+    
+\end{document}
